@@ -1,8 +1,10 @@
-import requests
-from bs4 import BeautifulSoup
 import csv
 
-"""
+import requests
+from bs4 import BeautifulSoup
+
+
+
 url_book = "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
 
 response = requests.get(url_book)
@@ -51,32 +53,19 @@ image_url = lien_general + image_url_src
 #liste dans l'ordre des informations à mettre dans le fichier csv
 liste_informations = [product_page_url, UPC, title, price_including_tax, price_excluding_tax, number_available,product_description, category, review_rating, image_url]
 
+
+
+
+
+"""
 #Création fichier CSV
+
 en_tete = ['product_page_url', 'universal_ product_code (upc)', 'title', 'price_including_tax', 'price_excluding_tax', 'number_available', 'product_description', 'category', 'review_rating', 'image_url']
+
+#Pour ouvrir un fichier data.csv correspondant au cas où
 
 with open('data.csv', 'w') as csv_file:
     writer = csv.writer(csv_file, delimiter=',')
     writer.writerow(en_tete)
     writer.writerow(liste_informations)
 """
-
-links = []
-
-url_category = "https://books.toscrape.com/catalogue/category/books/mystery_3/index.html"
-
-response_category = requests.get(url_category)
-response_category.encoding = 'utf-8'
-
-soup = BeautifulSoup(response_category.text,"html.parser")
-
-#J'isole le div qui contient le lien de la page des livres 
-divs = soup.find_all('div', class_="image_container")
-
-#Cette boucle me permet d'obtenir les liens des livres sur la page (en faisant print(links))
-for div in divs: 
-    a = div.find('a')
-    link = a['href']
-    link = link.replace('../../../', '')
-    links.append("https://books.toscrape.com/catalogue/" + link) 
-
-print(links)
