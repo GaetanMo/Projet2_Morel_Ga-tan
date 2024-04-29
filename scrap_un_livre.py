@@ -1,4 +1,5 @@
 import csv
+import os
 
 import requests
 from bs4 import BeautifulSoup
@@ -50,5 +51,23 @@ def scrap_un_livre(url_book): #Fonction qui permet de scrap toutes les données 
     #liste dans l'ordre des informations à mettre dans le fichier csv
     liste_informations = [product_page_url, UPC, title, price_including_tax, price_excluding_tax, number_available,product_description, category, review_rating, image_url]
 
+
+    #Création dossier images avec les images des livres dedans
+    nom_dossier = "images"
+
+    if not os.path.exists(nom_dossier):
+        os.makedirs(nom_dossier)
+
+    chemin_image = os.path.abspath(os.path.join(nom_dossier, title + ".jpg"))
+
+    response_img = requests.get(image_url)
+
+    with open(chemin_image, 'wb') as fichier:
+        fichier.write(response_img.content)
+
     return liste_informations
+
+
+
+
 

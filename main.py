@@ -11,6 +11,8 @@ from parcourir_categories import parcourir_categories
 
 categories = parcourir_categories()
 
+
+                                            
 for categorie in categories:
     url_categorie = f"https://books.toscrape.com/catalogue/category/books/{categorie}/index.html"
     links = []
@@ -19,9 +21,15 @@ for categorie in categories:
 
     en_tete = ['product_page_url', 'universal_ product_code (upc)', 'title', 'price_including_tax', 'price_excluding_tax', 'number_available', 'product_description', 'category', 'review_rating', 'image_url']
 
-    nom_du_fichier = f"{categorie.replace('/','')}.csv"
 
-    with open(nom_du_fichier, 'w') as csv_file: #Création fichier CSV
+    dossier_categories = "categories"
+
+    if not os.path.exists(dossier_categories):
+        os.makedirs(dossier_categories)
+
+    chemin_fichiers_csv = os.path.abspath(os.path.join(dossier_categories, f"{categorie.replace('/','')}.csv"))
+
+    with open(chemin_fichiers_csv, 'w') as csv_file: #Création fichier CSV
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow(en_tete) #Première ligne = en_tete
         for link in links: #Pour tous les liens dans la liste links, on éxécute les deux lignes suivantes
