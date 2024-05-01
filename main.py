@@ -6,10 +6,10 @@ from bs4 import BeautifulSoup
 
 from scrap_un_livre import scrap_un_livre
 from scrap_url_livres import scrap_url_livres
-from parcourir_categories import parcourir_categories
+from parcourir_categories import liens_categories
 
 
-categories = parcourir_categories()
+categories = liens_categories()
 
 
                                             

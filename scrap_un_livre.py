@@ -53,12 +53,18 @@ def scrap_un_livre(url_book): #Fonction qui permet de scrap toutes les données 
 
 
     #Création dossier images avec les images des livres dedans
+    
     nom_dossier = "images"
 
     if not os.path.exists(nom_dossier):
         os.makedirs(nom_dossier)
 
-    chemin_image = os.path.abspath(os.path.join(nom_dossier, title.replace("/", "") + ".jpg"))
+    sous_dossier = category
+
+    if not os.path.exists(os.path.join (nom_dossier, sous_dossier)):
+        os.makedirs(os.path.join (nom_dossier, sous_dossier))
+    
+    chemin_image = os.path.abspath(os.path.join(nom_dossier, sous_dossier, title.replace("/", "") + ".jpg"))
 
     response_img = requests.get(image_url)
 

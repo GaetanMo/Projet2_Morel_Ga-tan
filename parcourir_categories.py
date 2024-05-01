@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 
-def parcourir_categories():
+def liens_categories():
     url_page_accueil = "https://books.toscrape.com/index.html"
 
     response_category = requests.get(url_page_accueil)
