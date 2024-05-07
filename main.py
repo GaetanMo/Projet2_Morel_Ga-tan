@@ -9,7 +9,7 @@ from liens_categories import liens_categories
 
 
 categories = liens_categories()
-                                            
+               
 for categorie in categories:
     url_categorie = f"https://books.toscrape.com/catalogue/category/books/{categorie}/index.html"
     links = []

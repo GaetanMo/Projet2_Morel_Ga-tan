@@ -41,6 +41,22 @@ def scrap_un_livre(url_book): #Fonction qui permet de scrap toutes les données 
     review_rating = ' : '.join(review_rating_list)
     review_rating = review_rating.replace('"', '')
 
+    if review_rating == "star-rating : One":
+        review_rating = "1"
+
+    if review_rating == "star-rating : Two": 
+        review_rating = "2"
+
+    if review_rating == "star-rating : Three":
+        review_rating = "3"
+
+    if review_rating == "star-rating : Four":
+        review_rating = "4"
+
+    if review_rating == "star-rating : Five":
+        review_rating = "5"
+
+
     #Je scrap l'URL de l'image
     image_url_line = soup.find("img")
     image_url_src = image_url_line["src"]
