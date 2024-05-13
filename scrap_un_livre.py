@@ -88,8 +88,3 @@ def scrap_un_livre(url_book): #Fonction qui permet de scrap toutes les données 
         fichier.write(response_img.content)
 
     return liste_informations
-
-
-
-
-

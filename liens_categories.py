@@ -18,11 +18,7 @@ def liens_categories():
 
     for li in lis:
         a = li.find('a')
-        link = a['href'].replace('catalogue/category/books/', '').replace('index.html', '')
+        link = a['href'].replace('catalogue/category/books/', '').replace('/index.html', '')
         links_categories.append(link)
 
     return links_categories
-
-
-
-

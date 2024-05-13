@@ -44,5 +44,3 @@ def scrap_categorie(url_première_page, categorie, stockage):
         for link in stockage: #Pour tous les liens dans la liste links, on éxécute les deux lignes suivantes
             informations_livre = scrap_un_livre(link)
             writer.writerow(informations_livre) 
-
-
