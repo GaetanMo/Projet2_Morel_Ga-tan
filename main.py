@@ -1,9 +1,3 @@
-import csv
-import os
-
-import requests
-from bs4 import BeautifulSoup
-
 from scrap_categorie import scrap_categorie
 from liens_categories import liens_categories
 
